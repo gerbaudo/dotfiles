@@ -16,6 +16,13 @@ fi
 
 
 # Put your fun stuff here.
+
+# set the terminal prompt
+export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] " # user@host <shortdir> $
+# the 'ls' blue on dark background is illegible; change it to bold blue (see dircolors --print-database)
+export LS_COLORS="`echo $LS_COLORS  | sed 's/\=00\;34\:/\=01\;34\:/g'`"
+
+# define several shorthands
 alias enw="emacs -nw"
 alias kcern="kinit -f $USER@CERN.CH"
 alias kfnal="kinit -f $USER@FNAL.GOV"
