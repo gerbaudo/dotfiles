@@ -24,6 +24,7 @@ export LS_COLORS="`echo $LS_COLORS  | sed 's/\=00\;34\:/\=01\;34\:/g'`"
 
 # define several shorthands
 alias enw="emacs -nw"
+alias screen="screen -e^U^U" # use C-u instead of the default C-a
 alias kcern="kinit -f $USER@CERN.CH"
 alias kfnal="kinit -f $USER@FNAL.GOV"
 alias boxster="ssh -Y boxster-clued0.fnal.gov"
