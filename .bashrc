@@ -32,3 +32,10 @@ alias cayman="ssh -Y cayman-clued0.fnal.gov"
 alias nifae06="ssh -Y nifae06.cern.ch"
 alias nifae06tunnel="ssh -L 5902:localhost:5902 nifae06.cern.ch"
 alias at3="ssh -Y at3.pic.es"
+alias pcatr17="ssh -Y pcatr17.cern.ch"
+
+# set my default printer on CERN computers
+if [[ "$HOSTNAME" == *.cern.ch ]]
+then
+    export PRINTER="32-SB02-CAN"
+fi
