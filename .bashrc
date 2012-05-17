@@ -17,6 +17,8 @@ fi
 
 # Put your fun stuff here.
 
+# history with timestamp
+export HISTTIMEFORMAT="%F %T "
 # set the terminal prompt
 export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] " # user@host <shortdir> $
 # the 'ls' blue on dark background is illegible; change it to bold blue (see dircolors --print-database)
