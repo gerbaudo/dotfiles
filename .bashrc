@@ -36,6 +36,9 @@ alias nifae06="ssh -Y nifae06.cern.ch"
 alias nifae06tunnel="ssh -L 5902:localhost:5902 nifae06.cern.ch"
 alias at3="ssh -Y at3.pic.es"
 alias pcatr17="ssh -Y pcatr17.cern.ch"
+alias pc5='ssh -Y atlaspc5.ps.uci.edu'
+alias gp1='ssh -Y gpatlas1.ps.uci.edu'
+alias gp1hop='ssh -tCL 5906:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5906:localhost:22 gpatlas1.ps.uci.edu'
 
 # set my default printer on CERN computers
 if [[ "$HOSTNAME" == *.cern.ch ]]
