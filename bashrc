@@ -19,8 +19,9 @@ fi
 # history with timestamp
 export HISTTIMEFORMAT="%F %T "
 
-# check whether the current user has a ~/bin and if so add it to the PATH
+# check whether the current user has a ~/bin, ~/opt/bin and if so add it to the PATH
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
+[ -d "$HOME/opt/bin" ] && export PATH="$HOME/opt/bin:$PATH";
 
 export EDITOR="emacs -nw"
 export SVN_EDITOR="emacs -nw"
