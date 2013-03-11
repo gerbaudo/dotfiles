@@ -5,7 +5,11 @@
 
 
 # Use Ctrl+J instead of Ctrl+A
-escape ^Uu
+escape ^Jj
+
+# start bash as a login shell
+# from http://serverfault.com/questions/226783/how-to-tell-gnu-screen-to-run-bash-profile-in-each-new-window
+shell -$SHELL
 
 # Change the hardstatus settings to give an window list at the bottom of the
 ##screen, with the time and date and with the current window highlighted
