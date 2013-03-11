@@ -24,7 +24,17 @@
   ;; If there is more than one, they won't work right.
  )
 
-(global-font-lock-mode t)
+(when (fboundp 'global-font-lock-mode) (global-font-lock-mode t)) ; font-lock highlight syntax
+(setq diff-switches "-u")                                         ; default to unified diffs
+(normal-erase-is-backspace-mode 0)                                ; Fix the backspace doing delete
+(setq line-number-mode t)                                         ; Show line number
+(setq column-number-mode t)                                       ; Show column number
+(transient-mark-mode t)                                           ; Highlight selected region
+(global-set-key "\M-g" 'goto-line)                                ; Alt-g runs the goto-line function
+(show-paren-mode 1)                                               ; highlight matching parentheses
+
+
+
 ;;(setq font-lock-maximum-size nil)
 (set-face-foreground font-lock-comment-face "red")
 (set-background-color "Black")
