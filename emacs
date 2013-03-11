@@ -35,12 +35,12 @@
 (column-number-mode 1)
 
 ;; Load cmake mode
-(setq load-path (cons (expand-file-name "~/.emacs.d/") load-path))
-(require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-                ("\\.cmake\\'" . cmake-mode))
-              auto-mode-alist))
+; (setq load-path (cons (expand-file-name "~/.emacs.d/") load-path))
+; (require 'cmake-mode)
+; (setq auto-mode-alist
+;       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+;                 ("\\.cmake\\'" . cmake-mode))
+;               auto-mode-alist))
 
 ;;; Load automatically hide-show with c code
 (add-hook 'c-mode-hook 'hs-minor-mode)
@@ -63,16 +63,16 @@
 ;; use chromium when opening links
 (setq browse-url-browser-function (quote browse-url-generic))
 (setq browse-url-generic-program "chromium")
-;; enable org-babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (sh . t)
-   (python . t)
-   (ditaa . t)
-   (gnuplot . t)
-   (screen . t)
-   (R . t)))
+; ;; enable org-babel languages
+; (org-babel-do-load-languages
+;  'org-babel-load-languages
+;  '((emacs-lisp . t)
+;    (sh . t)
+;    (python . t)
+;    (ditaa . t)
+;    (gnuplot . t)
+;    (screen . t)
+;    (R . t)))
 
 
 ;; (defvar missing-packages-list nil
@@ -106,8 +106,8 @@
 ;;			   "\\RequirePackage{atbegshi}\n\\documentclass{beamer}\n"
 ;;			   org-beamer-sectioning))
 ;;  )
-;; slime needs to know which lisp to use
-(setq inferior-lisp-program "clisp")
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-(require 'slime-autoloads)
-(slime-setup)
+; ;; slime needs to know which lisp to use
+; (setq inferior-lisp-program "clisp")
+; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+; (require 'slime-autoloads)
+; (slime-setup)
