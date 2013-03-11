@@ -9,6 +9,11 @@ if [[ -s "$HOME/.bash_prompt" ]]; then
   source "$HOME/.bash_prompt"
 fi
 
+if [[ -s "$HOME/.bash_profile_gpatlas" ]]; then
+  source "$HOME/.bash_profile_gpatlas"
+fi
+
+
 if [[ -s "$HOME/.bash_aliases" ]]; then
    source "$HOME/.bash_aliases"
 fi
