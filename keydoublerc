@@ -1,0 +1,8 @@
+! keydouble configuration file
+!
+! natart_pairs: 65:255
+
+keycode 65 = Control_L
+keycode 255 = space
+
+add control = Control_L
