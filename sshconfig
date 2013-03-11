@@ -1,0 +1,9 @@
+Host *.cern.ch
+ForwardX11 yes
+ForwardAgent yes
+ForwardX11Trusted yes
+
+Host *.pic.es
+ForwardX11 yes
+ForwardAgent yes
+ForwardX11Trusted yes
