@@ -1,0 +1,10 @@
+if [[ "$HOSTNAME" == *.cern.ch ]]
+then
+	echo "Setting up my lxplus aliases"
+	alias nifae06="ssh -Y nifae06.cern.ch"
+	alias pcatr17="ssh -Y pcatr17.cern.ch"
+	alias lpr="lpr -o media=A4 -o fit-to-page"
+	alias eos="/afs/cern.ch/project/eos/installation/0.1.0-22d/bin/eos.select"
+	# set default printer
+	export PRINTER="32-SB02-CAN"
+fi
