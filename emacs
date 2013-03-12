@@ -13,6 +13,7 @@
  '(safe-local-variable-values (quote ((org-export-html-auto-postamble))))
  '(show-paren-mode t)
  '(tab-width 4)
+ '(indent-tabs-mode nil)
  '(transient-mark-mode t))
  '(global-font-lock-mode t nil (font-lock)
  '(show-paren-mode t nil (paren)))
