@@ -39,3 +39,10 @@ alias gra='git remote add'
 alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
+
+# svn aliases
+alias svs='svn status'
+alias svi='svn info'
+alias svu='svn update'
+alias svc='svn commit'
+alias svcm='svn commit -m'
