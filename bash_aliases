@@ -1,8 +1,5 @@
 alias enw="emacs -nw"
 
-#- should be in screenrc
-#- alias screen="screen -e^U^U" # use C-u instead of the default C-a
-
 alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
 alias kcern="kinit -f $USER@CERN.CH"
