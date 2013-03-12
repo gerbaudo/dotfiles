@@ -25,9 +25,3 @@ export HISTTIMEFORMAT="%F %T "
 
 export EDITOR="emacs -nw"
 export SVN_EDITOR="emacs -nw"
-
-# set my default printer on CERN computers
-if [[ "$HOSTNAME" == *.cern.ch ]]
-then
-		export PRINTER="32-SB02-CAN"
-fi
