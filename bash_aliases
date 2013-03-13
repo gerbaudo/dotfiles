@@ -20,6 +20,7 @@ alias gp2='ssh -Y gpatlas2.ps.uci.edu'
 alias gp1hop='ssh -tCL 5906:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5906:localhost:22 gpatlas1.ps.uci.edu'
 alias gp2hop='ssh -tCL 5907:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5907:localhost:22 gpatlas2.ps.uci.edu'
 alias vproxy='voms-proxy-init -voms atlas -valid 144:00'
+alias dipp='$HOME/bin/dipp.py' # get it from https://raw.github.com/davidegerbaudo/python-scripts/master/various/dipp.py
 
 # git aliases
 alias ga='git add'
