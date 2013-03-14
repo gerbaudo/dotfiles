@@ -22,6 +22,13 @@ alias gp2hop='ssh -tCL 5907:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5907:loca
 alias vproxy='voms-proxy-init -voms atlas -valid 144:00'
 alias dipp='$HOME/bin/dipp.py' # get it from https://raw.github.com/davidegerbaudo/python-scripts/master/various/dipp.py
 
+# cannot define an alias with arg; use a function instead
+mktoday() {
+    local target_dir="/tmp/${USER}/`date +%F`" && [[ $# -gt 0 ]]  && target_dir="/tmp/${USER}/${1}-`date +%F`" ;
+    echo "mkdir ${target_dir}"
+    mkdir -p ${target_dir}
+    }
+
 # git aliases
 alias ga='git add'
 alias gp='git push'
