@@ -7,4 +7,6 @@ then
 	alias eos="/afs/cern.ch/project/eos/installation/0.1.0-22d/bin/eos.select"
 	# set default printer
 	export PRINTER="32-SB02-CAN"
+    export AtlasSetup=/afs/cern.ch/atlas/software/dist/AtlasSetup
+    alias asetup='source $AtlasSetup/scripts/asetup.sh'
 fi
