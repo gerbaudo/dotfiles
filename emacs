@@ -34,7 +34,7 @@
 (global-set-key "\M-g" 'goto-line)                                ; Alt-g runs the goto-line function
 (show-paren-mode 1)                                               ; highlight matching parentheses
 
-
+;(setq explicit-bash-args (list "--login" "-i"))
 
 ;;(setq font-lock-maximum-size nil)
 (set-face-foreground font-lock-comment-face "red")
