@@ -29,6 +29,19 @@ mktoday() {
     mkdir -p ${target_dir}
     }
 
+# determine whether this is an interactive shell
+# (from http://tldp.org/LDP/abs/html/intandnonint.html)
+isthisshellinteractive() {
+ case $- in
+ *i*)    # interactive shell
+         echo yes
+ ;;
+ *)      # non-interactive shell
+         echo no
+ ;;
+ esac
+}
+
 # git aliases
 alias ga='git add'
 alias gp='git push'
@@ -48,6 +61,7 @@ alias gcl='git clone'
 # svn aliases
 alias svs='svn status'
 alias svi='svn info'
+alias svd='svn diff'
 alias svu='svn update'
 alias svc='svn commit'
 alias svcm='svn commit -m'
