@@ -43,6 +43,21 @@ isthisshellinteractive() {
  esac
 }
 
+# short for 'find base-location -name "*some-name*" -exec grep some-thing {}' \; -print
+fgrepp() {
+    if [[ 2 -gt $# || $# -gt 3 ]]
+    then
+        echo "Usage: fgrep where [approxname] whattogrep"
+    else
+        local base_dir="${1}"
+        local name_pattern="*"    && [[ $# -gt 2 ]]  && name_pattern="*${2}*" ;
+        local word_pattern="${2}" && [[ $# -gt 2 ]]  && word_pattern="${3}" ;
+        # echo "find  ${base_dir} -type f -iname \"${name_pattern}\" -exec grep --color='auto' ${word_pattern} {} \; -print"
+        find  ${base_dir} -type f -iname "${name_pattern}" -exec grep --color='auto' ${word_pattern} {} \; -print
+    fi
+}
+
+
 # git aliases
 alias ga='git add'
 alias gp='git push'
