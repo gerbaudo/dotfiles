@@ -127,4 +127,4 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (setq inferior-lisp-program "clisp")  ; slime needs to know which lisp to use
 (autoload 'slime-selector "slime" t)
-(eval-after-load "slime" (slime-setup))
+(eval-after-load "slime" '(progn (slime-setup)))
