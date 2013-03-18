@@ -63,18 +63,18 @@
 (if (and (boundp 'i-use-hideshow) i-use-hideshow)    ; autoload hideshow
     (autoload 'hs-minor-mode "hideshow"
       "Selective code display" t))
+(global-set-key [C-next] 'next-buffer)               ; tab between buffers : C-pgup
+(global-set-key [C-prior] 'previous-buffer)          ; tab between buffers : C-pgdn
 
-
-(global-set-key [C-next] 'next-buffer)       ; tabbing like with firefox
-(global-set-key [C-prior] 'previous-buffer) ;
-
-;; Org-mode settings
+;
+; Org-mode settings
+;
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-font-lock-mode 1)
-;; use chromium when opening links
-(setq browse-url-browser-function (quote browse-url-generic))
+(setq browse-url-browser-function                    ; use chromium when opening links
+      (quote browse-url-generic))
 (setq browse-url-generic-program "chromium")
 ; ;; enable org-babel languages
 ; (org-babel-do-load-languages
@@ -119,8 +119,8 @@
 ;;			   "\\RequirePackage{atbegshi}\n\\documentclass{beamer}\n"
 ;;			   org-beamer-sectioning))
 ;;  )
-; ;; slime needs to know which lisp to use
-; (setq inferior-lisp-program "clisp")
+; ;
+; (setq inferior-lisp-program "clisp")  ; slime needs to know which lisp to use
 ; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-; (require 'slime-autoloads)
+; (autoload 'slime-selector "slime" t)
 ; (slime-setup)
