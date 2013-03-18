@@ -72,7 +72,6 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
-(global-font-lock-mode 1)
 (setq browse-url-browser-function                    ; use chromium when opening links
       (quote browse-url-generic))
 (setq browse-url-generic-program "chromium")
