@@ -120,7 +120,11 @@
 ;;			   org-beamer-sectioning))
 ;;  )
 ; ;
-; (setq inferior-lisp-program "clisp")  ; slime needs to know which lisp to use
-; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-; (autoload 'slime-selector "slime" t)
-; (slime-setup)
+
+;
+; slime settings
+;
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+(setq inferior-lisp-program "clisp")  ; slime needs to know which lisp to use
+(autoload 'slime-selector "slime" t)
+(eval-after-load "slime" (slime-setup))
