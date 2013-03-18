@@ -59,14 +59,14 @@
 ;
 ; other settings
 ;
-(add-hook 'c-mode-hook 'hs-minor-mode)       ; hide-show for c
-(add-hook 'c++-mode-hook 'hs-minor-mode)     ; hide-show for c++
+(add-hook 'c-mode-hook 'hs-minor-mode)               ; hide-show for c
+(add-hook 'c++-mode-hook 'hs-minor-mode)             ; hide-show for c++
+(global-set-key (kbd "C-c <left>")  'hs-hide-block)  ; shortkey hide
+(global-set-key (kbd "C-c <right>") 'hs-show-block)  ; shortkey show
+(if (and (boundp 'i-use-hideshow) i-use-hideshow)    ; autoload hideshow
+    (autoload 'hs-minor-mode "hideshow"
+      "Selective code display" t))
 
-;;; some shortcut for folding with hideshow 
-(require 'hideshow)
-;;(setq hs-minor-mode-hook nil) ; I do not like hs-hide-initial-comment-block
-(global-set-key (kbd "C-c <left>")  'hs-hide-block)
-(global-set-key (kbd "C-c <right>") 'hs-show-block)
 
 (global-set-key [C-next] 'next-buffer)       ; tabbing like with firefox
 (global-set-key [C-prior] 'previous-buffer) ;
