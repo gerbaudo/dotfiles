@@ -33,6 +33,20 @@
 (transient-mark-mode t)                                           ; Highlight selected region
 (global-set-key "\M-g" 'goto-line)                                ; Alt-g runs the goto-line function
 (show-paren-mode 1)                                               ; highlight matching parentheses
+(column-number-mode 1)                                            ; Show column number at bottom of screen
+
+;
+; Additional packages I often use
+;
+(setq load-path (cons (expand-file-name "~/.emacs.d/") load-path)) ; where I keep them
+(autoload 'markdown-mode "markdown-mode" "highlight markdown" t)   ; Load markdown mode
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))       ;
+(autoload 'cmake-mode "cmake-mode.el" t)                           ; Load cmake mode
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
+
 
 ;(setq explicit-bash-args (list "--login" "-i"))
 
@@ -42,20 +56,11 @@
 (set-foreground-color "White")
 (set-cursor-color "LightSkyBlue")
 
-;; Show column number at bottom of screen
-(column-number-mode 1)
-
-;; Load cmake mode
-; (setq load-path (cons (expand-file-name "~/.emacs.d/") load-path))
-; (require 'cmake-mode)
-; (setq auto-mode-alist
-;       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-;                 ("\\.cmake\\'" . cmake-mode))
-;               auto-mode-alist))
-
-;;; Load automatically hide-show with c code
-(add-hook 'c-mode-hook 'hs-minor-mode)
-(add-hook 'c++-mode-hook 'hs-minor-mode)
+;
+; other settings
+;
+(add-hook 'c-mode-hook 'hs-minor-mode)       ; hide-show for c
+(add-hook 'c++-mode-hook 'hs-minor-mode)     ; hide-show for c++
 
 ;;; some shortcut for folding with hideshow 
 (require 'hideshow)
