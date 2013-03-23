@@ -60,6 +60,7 @@ fgrepp() {
 
 # git aliases
 alias gad='git add'
+alias gadp='git add -p'
 alias gpu='git push'
 alias glg='git log'
 alias gst='git status'
