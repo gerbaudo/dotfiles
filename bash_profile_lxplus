@@ -4,7 +4,8 @@ then
 	alias nifae06="ssh -Y nifae06.cern.ch"
 	alias pcatr17="ssh -Y pcatr17.cern.ch"
 	alias lpr="lpr -o media=A4 -o fit-to-page"
-	alias eos="/afs/cern.ch/project/eos/installation/0.1.0-22d/bin/eos.select"
+    # setup eos; atlernatively, 'source /afs/cern.ch/project/eos/installation/atlas/etc/setup.sh'
+	alias eos="/afs/cern.ch/project/eos/installation/0.2.22/bin/eos.select"
 	# set default printer
 	export PRINTER="32-SB02-CAN"
     export AtlasSetup=/afs/cern.ch/atlas/software/dist/AtlasSetup
