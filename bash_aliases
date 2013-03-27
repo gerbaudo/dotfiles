@@ -59,19 +59,20 @@ fgrepp() {
 
 
 # git aliases
-alias ga='git add'
-alias gp='git push'
-alias gl='git log'
+alias gad='git add'
+alias gadp='git add -p'
+alias gpu='git push'
+alias glg='git log'
 alias gst='git status'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gm='git commit -m'
-alias gma='git commit -am'
-alias gb='git branch'
-alias gc='git checkout'
+alias gdf='git diff'
+alias gdfc='git diff --cached'
+alias gcm='git commit -m'
+alias gcma='git commit -am'
+alias gbr='git branch'
+alias gco='git checkout'
 alias gra='git remote add'
 alias grr='git remote rm'
-alias gpu='git pull'
+alias gpl='git pull'
 alias gcl='git clone'
 
 # svn aliases

@@ -1,7 +1,4 @@
 
-(global-set-key "\M-g" 'goto-line)  ; Alt-g runs the goto-line
-                                    ; function.
-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -33,6 +30,20 @@
 (transient-mark-mode t)                                           ; Highlight selected region
 (global-set-key "\M-g" 'goto-line)                                ; Alt-g runs the goto-line function
 (show-paren-mode 1)                                               ; highlight matching parentheses
+(column-number-mode 1)                                            ; Show column number at bottom of screen
+
+;
+; Additional packages I often use
+;
+(setq load-path (cons (expand-file-name "~/.emacs.d/") load-path)) ; where I keep them
+(autoload 'markdown-mode "markdown-mode" "highlight markdown" t)   ; Load markdown mode
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))       ;
+(autoload 'cmake-mode "cmake-mode.el" t)                           ; Load cmake mode
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
+
 
 ;(setq explicit-bash-args (list "--login" "-i"))
 
@@ -42,37 +53,27 @@
 (set-foreground-color "White")
 (set-cursor-color "LightSkyBlue")
 
-;; Show column number at bottom of screen
-(column-number-mode 1)
+;
+; other settings
+;
+(add-hook 'c-mode-hook 'hs-minor-mode)               ; hide-show for c
+(add-hook 'c++-mode-hook 'hs-minor-mode)             ; hide-show for c++
+(global-set-key (kbd "C-c <left>")  'hs-hide-block)  ; shortkey hide
+(global-set-key (kbd "C-c <right>") 'hs-show-block)  ; shortkey show
+(if (and (boundp 'i-use-hideshow) i-use-hideshow)    ; autoload hideshow
+    (autoload 'hs-minor-mode "hideshow"
+      "Selective code display" t))
+(global-set-key [C-next] 'next-buffer)               ; tab between buffers : C-pgup
+(global-set-key [C-prior] 'previous-buffer)          ; tab between buffers : C-pgdn
 
-;; Load cmake mode
-; (setq load-path (cons (expand-file-name "~/.emacs.d/") load-path))
-; (require 'cmake-mode)
-; (setq auto-mode-alist
-;       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-;                 ("\\.cmake\\'" . cmake-mode))
-;               auto-mode-alist))
-
-;;; Load automatically hide-show with c code
-(add-hook 'c-mode-hook 'hs-minor-mode)
-(add-hook 'c++-mode-hook 'hs-minor-mode)
-
-;;; some shortcut for folding with hideshow 
-(require 'hideshow)
-;;(setq hs-minor-mode-hook nil) ; I do not like hs-hide-initial-comment-block
-(global-set-key (kbd "C-c <left>")  'hs-hide-block)
-(global-set-key (kbd "C-c <right>") 'hs-show-block)
-
-(global-set-key [C-next] 'next-buffer)       ; tabbing like with firefox
-(global-set-key [C-prior] 'previous-buffer) ;
-
-;; Org-mode settings
+;
+; Org-mode settings
+;
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
-(global-font-lock-mode 1)
-;; use chromium when opening links
-(setq browse-url-browser-function (quote browse-url-generic))
+(setq browse-url-browser-function                    ; use chromium when opening links
+      (quote browse-url-generic))
 (setq browse-url-generic-program "chromium")
 ; ;; enable org-babel languages
 ; (org-babel-do-load-languages
@@ -117,8 +118,12 @@
 ;;			   "\\RequirePackage{atbegshi}\n\\documentclass{beamer}\n"
 ;;			   org-beamer-sectioning))
 ;;  )
-; ;; slime needs to know which lisp to use
-; (setq inferior-lisp-program "clisp")
-; (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
-; (require 'slime-autoloads)
-; (slime-setup)
+; ;
+
+;
+; slime settings
+;
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+(setq inferior-lisp-program "clisp")  ; slime needs to know which lisp to use
+(autoload 'slime-selector "slime" t)
+(eval-after-load "slime" '(progn (slime-setup)))
