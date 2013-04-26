@@ -25,3 +25,8 @@ export HISTTIMEFORMAT="%F %T "
 
 export EDITOR="emacs -nw"
 export SVN_EDITOR="emacs -nw"
+
+[[ -r "$HOME/.bash_prompt" ]]          && . $HOME/.bash_prompt
+[[ -r "$HOME/.bash_profile_lxplus" ]]  && . $HOME/.bash_profile_lxplus
+[[ -r "$HOME/.bash_profile_gpatlas" ]] && . $HOME/.bash_profile_gpatlas
+[[ -r "$HOME/.bash_aliases" ]]         && . $HOME/.bash_aliases
