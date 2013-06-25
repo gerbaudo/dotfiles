@@ -7,3 +7,6 @@ Host *.pic.es
 ForwardX11 yes
 ForwardAgent yes
 ForwardX11Trusted yes
+
+Host *github.com
+ForwardX11 no
