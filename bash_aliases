@@ -2,6 +2,7 @@ alias enw="emacs -nw"
 
 alias ls="ls --color=auto"
 alias ll="ls -l --color=auto"
+alias lsn='stat -c "%a %n"'
 alias kcern="kinit -f $USER@CERN.CH"
 alias kfnal="kinit -f $USER@FNAL.GOV"
 alias boxster="ssh -Y boxster-clued0.fnal.gov"
@@ -22,6 +23,13 @@ alias gp2hop='ssh -tCL 5907:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5907:loca
 alias vproxy='voms-proxy-init -voms atlas -valid 144:00'
 alias dipp='$HOME/bin/dipp.py' # get it from https://raw.github.com/davidegerbaudo/python-scripts/master/various/dipp.py
 alias psu='pgrep -u $USER | xargs ps -f -p'
+
+## ls with numeric permission, see http://stackoverflow.com/questions/1795976/can-the-unix-list-command-ls-output-numerical-chmod-permissions
+# some problem with double quotes in alias...to be fixed
+#lsn() {
+#    ls -l $* | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf("%0o ",k);print}'
+#    }
+#
 
 # cannot define an alias with arg; use a function instead
 mktoday() {
