@@ -7,8 +7,17 @@
 # Use Ctrl+J instead of Ctrl+A
 escape ^Jj
 
-# start bash as a login shell
-# from http://serverfault.com/questions/226783/how-to-tell-gnu-screen-to-run-bash-profile-in-each-new-window
+# emacs keybindings for navigation in copy mode, from http://goo.gl/M2uAC7
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+# C-space sets mark. markkeys does it in screen 4.0 and higher, but 3.9x
+# needs the bindkey command. (note the ^@ escape sequence for C-space.)
+markkeys ' '=^@
+# special hack for C-e, since it should go *past*
+# the last char. -m means this is for copy mode only.
+bindkey -m ^e stuff "$^f"
+
+# start bash as a login shell, from
+# http://serverfault.com/questions/226783/how-to-tell-gnu-screen-to-run-bash-profile-in-each-new-window
 shell -$SHELL
 
 # Change the hardstatus settings to give an window list at the bottom of the
