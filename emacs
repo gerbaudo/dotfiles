@@ -52,6 +52,8 @@
 (set-background-color "Black")
 (set-foreground-color "White")
 (set-cursor-color "LightSkyBlue")
+(set-keyboard-coding-system 'latin-9) ; intl keys with '-nw'
+(set-terminal-coding-system 'latin-9)
 
 ;
 ; other settings
