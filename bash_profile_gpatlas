@@ -3,4 +3,5 @@ then
 	echo "Atlas local setup for gpatlas*"
 	export ATLAS_LOCAL_ROOT_BASE=/export/home/atlasadmin/ATLASLocalRootBase
 	source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
+    alias qme='qstat -u $USER'
 fi
