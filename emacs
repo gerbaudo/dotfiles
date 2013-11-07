@@ -1,3 +1,4 @@
+;; -*- Emacs-Lisp -*-
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -5,6 +6,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(org-agenda-files (list "~/physics/worklog/2011/october.org" "~/physics/worklog/2011/september.org"))
  '(safe-local-variable-values (quote ((org-export-html-auto-postamble))))
@@ -67,6 +69,18 @@
       "Selective code display" t))
 (global-set-key [C-next] 'next-buffer)               ; tab between buffers : C-pgup
 (global-set-key [C-prior] 'previous-buffer)          ; tab between buffers : C-pgdn
+
+
+; customize c++ indent style, no namespace indentation
+; For more info see
+; http://www.emacswiki.org/emacs/CPlusPlusMode
+; and
+; http://stackoverflow.com/questions/2619853/emacs-override-indentation
+(c-add-style "nni-cc-mode"
+             '("cc-mode"  ; inherit from cc-mode
+             (c-offsets-alist . ((innamespace . [0])))))
+(defun nni-c++-mode-hook () (c-set-style "nni-cc-mode"))
+(add-hook 'c++-mode-hook 'nni-c++-mode-hook)
 
 ;
 ; Org-mode settings
