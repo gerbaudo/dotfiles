@@ -10,3 +10,11 @@ ForwardX11Trusted yes
 
 Host *github.com
 ForwardX11 no
+
+Host gpatlas1
+HostName gpatlas1.ps.uci.edu
+Host gpatlas2
+HostName gpatlas2.ps.uci.edu
+
+Host gpatlas1* gpatlas2*
+ProxyCommand ssh atlaspc5.ps.uci.edu /usr/bin/nc %h %p 2> /dev/null
