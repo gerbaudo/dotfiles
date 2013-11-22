@@ -6,6 +6,11 @@
 # anything or bad things will happen !
 
 
+# check whether the current user has a ~/bin, ~/opt/bin and if so add it to the PATH
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
+[ -d "$HOME/opt/bin" ] && export PATH="$HOME/opt/bin:$PATH";
+[ -d "$HOME/opt/lib" ] && export LD_LIBRARY_PATH="$HOME/opt/lib:$LD_LIBRARY_PATH";
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -18,10 +23,6 @@ fi
 
 # history with timestamp
 export HISTTIMEFORMAT="%F %T "
-
-# check whether the current user has a ~/bin, ~/opt/bin and if so add it to the PATH
-[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH";
-[ -d "$HOME/opt/bin" ] && export PATH="$HOME/opt/bin:$PATH";
 
 export EDITOR="emacs -nw"
 export SVN_EDITOR="emacs -nw"
