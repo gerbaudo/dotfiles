@@ -69,7 +69,7 @@
       "Selective code display" t))
 (global-set-key [C-next] 'next-buffer)               ; tab between buffers : C-pgup
 (global-set-key [C-prior] 'previous-buffer)          ; tab between buffers : C-pgdn
-
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on) ; deal with colors for shell propmt
 
 ; customize c++ indent style, no namespace indentation
 ; For more info see
