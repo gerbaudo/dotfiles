@@ -4,4 +4,46 @@ then
 	export ATLAS_LOCAL_ROOT_BASE=/export/home/atlasadmin/ATLASLocalRootBase
 	source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh
     alias qme='qstat -u $USER'
+    # utils from ~cshimmin/.bash_profile
+    function qkill_all() {
+        if [ -z "$1" ]; then
+	        lim=200
+        else
+            lim=$1
+        fi
+	    # first kill the jobs which are queued
+        jobids="$(qstat -u $(whoami) | grep atlas | grep Q | tail -n $lim | cut -d' ' -f1)"
+	    if [ ! -z "$jobids" ]; then
+		    qdel $jobids
+        fi
+	    # then kill any that are still running (squelch the usual error about 'all')
+        qdel all 2> /dev/null
+    }
+
+    function qhold_all() {
+	    if [ -z "$1" ]; then
+	        lim=100
+        else
+	        lim=$1
+        fi
+	    # first get jobs which are queued
+        jobids="$(qstat -u $(whoami) | grep atlas | grep Q | tail -n $lim | cut -d' ' -f1)"
+        if [ ! -z "$jobids" ]; then
+	        qhold -h u $jobids
+        fi
+    }
+
+    function qrls_all() {
+	    if [ -z "$1" ]; then
+	        lim=100
+        else
+	        lim=$1
+        fi
+	    # first get jobs which are holding
+        jobids="$(qstat -u $(whoami) | grep atlas | grep H | tail -n $lim | cut -d' ' -f1)"
+	    if [ ! -z "$jobids" ]; then
+	        qrls -h u $jobids
+        fi
+    }
+
 fi
