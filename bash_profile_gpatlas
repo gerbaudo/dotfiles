@@ -46,4 +46,13 @@ then
         fi
     }
 
+    function cluster_run() {
+        for i in {0..6}; do
+        node=compute-9-$((2*i + 26))
+        echo "running on ${node}"
+        ssh $node $1
+        echo
+        done
+    }
+
 fi
