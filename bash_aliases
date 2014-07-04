@@ -65,6 +65,14 @@ fgrepp() {
     fi
 }
 
+# handy stuff inspired from https://news.ycombinator.com/item?id=7981633
+function lt() { ls -ltrsa "$@" | tail; }
+function mkcd() { mkdir $1 && cd $1; }
+function hgrep()  { history | grep -v grep | grep "$@" -i --color=auto; }
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+function fname() { find . -iname "*$@*"; } ## find something here with ~name
+function remove_lines_from() { grep -F -x -v -f $2 $1; } ## removes lines from $1 if they appear in $2
+alias sum="xargs | tr ' ' '+' | bc" ## Usage: echo 1 2 3 | sum
 
 # git aliases
 alias gad='git add'
