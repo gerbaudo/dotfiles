@@ -15,4 +15,4 @@ Host gpatlas1 gpatlas2
 HostName %h.ps.uci.edu
 
 Host gpatlas1* gpatlas2*
-ProxyCommand /usr/bin/ssh -W %h:%p atlaspc5.ps.uci.edu
+ProxyCommand /usr/bin/ssh -W %h:%p atlaspc8.ps.uci.edu
