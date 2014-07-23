@@ -74,6 +74,44 @@ function fname() { find . -iname "*$@*"; } ## find something here with ~name
 function remove_lines_from() { grep -F -x -v -f $2 $1; } ## removes lines from $1 if they appear in $2
 alias sum="xargs | tr ' ' '+' | bc" ## Usage: echo 1 2 3 | sum
 
+# A simple function to jot down my notes while working.
+# Example usage
+# > ls -ltrh *foo                         # nice command, I see it works
+# > jot working from `pwd`, this works    # jot down a note to self
+# > jot ls -ltrh *foo                     # and the command
+function jot() {
+    : ${JOT_DEST:?"Need to set a valid JOT_DEST file; use jot-set."}
+    if [ ! -e ${JOT_DEST} ]
+    then
+        touch ${JOT_DEST}
+    fi
+    local TIMESTAMP=$(date +%F-%T)
+    echo "${TIMESTAMP} -- ${@}" >> ${JOT_DEST}
+}
+function jot-set() {
+    # function to pick a file where we jot things down
+    # based on http://stackoverflow.com/questions/15807845/list-files-and-show-them-in-a-menu-with-bash
+    local JOT_DIR="${HOME}/.jot/"
+    if [ ! -d ${JOT_DIR} ]; then mkdir ${JOT_DIR}; fi
+    local PROMPT="Please select a file:"
+    local OPTIONS=( $(find ${JOT_DIR} -maxdepth 1 -type f -regex ".*\.\(org\|txt\)" -print0 | xargs -0) )
+    local OPT=""
+    PS3="$PROMPT "
+    select OPT in "${OPTIONS[@]}" "Quit" ; do
+        if (( REPLY == 1 + ${#OPTIONS[@]} )) ; then
+            exit
+
+        elif (( REPLY > 0 && REPLY <= ${#OPTIONS[@]} )) ; then
+            echo  "You picked ${OPT} which is file ${REPLY}"
+            export JOT_DEST=${OPT}
+            break
+        else
+            echo "Invalid option. Try another one, or 'touch' ${JOT_DIR}/file if you want a new one."
+        fi
+    done
+    # ls -ld ${OPT} # just for dbg
+}
+
 # git aliases
 alias gad='git add'
 alias gadp='git add -p'
