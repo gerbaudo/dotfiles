@@ -88,6 +88,10 @@ function jot() {
     local TIMESTAMP=$(date +%F-%T)
     echo "${TIMESTAMP} -- ${@}" >> ${JOT_DEST}
 }
+function jot-last() {
+    : ${JOT_DEST:?"Need to set a valid JOT_DEST file; use jot-set."}
+    tail -n 4 ${JOT_DEST}
+}
 function jot-set() {
     # function to pick a file where we jot things down
     # based on http://stackoverflow.com/questions/15807845/list-files-and-show-them-in-a-menu-with-bash
