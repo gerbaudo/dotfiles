@@ -1,4 +1,4 @@
-if [[ "$(hostname -f)" == *.cern.ch ]]
+if [[ "$(hostname -f 2>&1)" == *.cern.ch ]]
 then
 	echo "Setting up my lxplus aliases"
 	alias nifae06="ssh -Y nifae06.cern.ch"
