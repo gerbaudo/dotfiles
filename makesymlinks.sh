@@ -10,7 +10,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc bash_aliases bash_profile bash_profile_gpatlas bash_profile_lxplus bash_prompt emacs screenrc sshconfig keydoublerc"    # list of files/folders to symlink in homedir
+files="bashrc bash_aliases bash_profile bash_profile_gpatlas bash_profile_lxplus bash_prompt emacs screenrc sshconfig keydoublerc tmux.conf"    # list of files/folders to symlink in homedir
 
 ##########
 
