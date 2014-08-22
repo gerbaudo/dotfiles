@@ -136,6 +136,26 @@ alias gra='git remote add'
 alias grr='git remote rm'
 alias gpl='git pull'
 alias gcl='git clone'
+function git-pull-attach-to-issue() {
+    # create a pull request attaching a branch to an existing issue
+    # see http://stackoverflow.com/questions/4528869/how-do-you-attach-a-new-pull-request-to-an-existing-issue-on-github
+    local username
+    local repository
+    local from_branch
+    local to_branch
+    local issue_number
+    read -r -p 'username     : ' username
+    read -r -p 'repository   : ' repository
+    read -r -p 'from_branch  : ' from_branch
+    read -r -p 'to_branch    : ' to_branch
+    read -r -p 'issue_number : ' issue_number
+    local cmd="curl"
+    cmd="${cmd} --user \"${username}\""
+    cmd="${cmd} --request POST"
+    cmd="${cmd} --data '{\"issue\": \"${issue_number}\", \"head\": \"${username}:${from_branch}\", \"base\": \"${to_branch}\"}'"
+    cmd="${cmd} https://api.github.com/repos/${username}/${repository}/pulls"
+    echo ${cmd}
+}
 
 # svn aliases
 alias svs='svn status'
