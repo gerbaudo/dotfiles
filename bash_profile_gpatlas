@@ -54,5 +54,8 @@ then
         echo
         done
     }
+    function jobs_per_user() {
+        squeue |  grep -v USER | awk 'NR >  1 {count[$4]++}END{for(j in count) print j," : "count[j]" jobs"}'
+    }
 
 fi
