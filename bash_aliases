@@ -137,6 +137,8 @@ alias gra='git remote add'
 alias grr='git remote rm'
 alias gpl='git pull'
 alias gcl='git clone'
+alias gtan='git tag -a' # create annotated tag
+alias gtal='git tag -a' # list tags with annotations
 function git-pull-attach-to-issue() {
     # create a pull request attaching a branch to an existing issue
     # see http://stackoverflow.com/questions/4528869/how-do-you-attach-a-new-pull-request-to-an-existing-issue-on-github
