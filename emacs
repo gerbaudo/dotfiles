@@ -37,7 +37,7 @@
 ;
 ; Additional packages I often use
 ;
-(setq load-path (cons (expand-file-name "~/.emacs.d/") load-path)) ; where I keep them
+(setq load-path (cons (expand-file-name "~/.emacs.d/lisp") load-path)) ; where I keep them
 (autoload 'markdown-mode "markdown-mode" "highlight markdown" t)   ; Load markdown mode
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))       ;
 (autoload 'cmake-mode "cmake-mode.el" t)                           ; Load cmake mode
