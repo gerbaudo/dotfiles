@@ -24,7 +24,7 @@ fi
 # history with timestamp
 export HISTTIMEFORMAT="%F %T "
 
-export LC_ALL="C"
+# export LC_ALL="C"
 
 export EDITOR="emacs -nw"
 export SVN_EDITOR="emacs -nw"
