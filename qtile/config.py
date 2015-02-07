@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from libqtile import bar, hook, layout, widget
@@ -15,13 +15,13 @@ bar_defaults = dict(
 layout_defaults = dict(
     border_width=1,
     margin=0,
-    border_focus='#336699',
+    border_focus='#ff0000',
     border_normal='#333333',
 )
 
 widget_defaults = dict(
     font='Ubuntu',
-    fontsize=14,
+    fontsize=12,
     padding=5,
     background=bar_defaults['background'],
     foreground=['#ffffff', '#ffffff', '#999999'],
@@ -82,15 +82,12 @@ class Widget(object):
 
     battery_text = battery.copy()
     battery_text.update(
-        charge_char='',  # fa-arrow-up
-        discharge_char='',  # fa-arrow-down
         format='{char} {hour:d}:{min:02d}',
     )
 
     weather = dict(
-        update_interval=60,
-        metric=False,
-        format='{condition_text} {condition_temp}°',
+        update_interval=300,
+        format='{condition_temp}',
     )
 
 
@@ -98,14 +95,14 @@ class Widget(object):
 class Commands(object):
     browser = 'google-chrome'
     dmenu = 'dmenu_run -i -b -p ">>>" -fn "-*-fixed-*-*-*-*-18-*-*-*-*-*-*-*" -nb "#15181a" -nf "#fff" -sb "#333" -sf "#fff"'
-    file_manager = 'nautilus --no-desktop'
-    lock_screen = 'gnome-screensaver-command -l'
-    screenshot = 'gnome-screenshot'
-    terminal = 'gnome-terminal'
-    trackpad_toggle = "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')"
-    volume_up = 'amixer -q -c 1 sset Master 5dB+'
-    volume_down = 'amixer -q -c 1 sset Master 5dB-'
-    volume_toggle = 'amixer -q -D pulse sset Master 1+ toggle'
+    file_manager = 'dolphin'
+    lock_screen = '/usr/bin/slock'
+    screenshot = 'ksnapshot'
+    terminal = 'konsole'
+    trackpad_toggle = '/usr/local/bin/toggleTouchPad'
+    volume_up = 'amixer -q set Master 5%+ unmute'
+    volume_down = 'amixer -q set Master 5%- unmute'
+    volume_toggle = 'amixer -q set Master toggle'
 
 
 # Keybindings
@@ -167,29 +164,19 @@ keys = [
 
 # Groups
 group_setup = (
-    ('', {  # fa-globe
+    ('www', {  # fa-globe
         'layout': 'max',
         'matches': [Match(wm_class=('Firefox', 'Google-chrome'))],
     }),
-    ('', {  # fa-code
+    ('code', {  # fa-terminal
         'layout': 'max',
-        'matches': [Match(wm_class=('Sublime',))],
+        'matches': [Match(wm_class=('Konsole', 'xterm',))],
     }),
-    ('', {}),  # fa-terminal
-    ('', {'layout': 'max'}),
-    ('', {  # fa-windows
+    ('comm', {  # communication
         'layout': 'max',
-        'matches': [Match(wm_class=('VirtualBox',))],
+        'matches': [Match(wm_class=('Skype',))],
     }),
-    ('', {  # fa-steam
-        'layout': 'max',
-        'matches': [Match(wm_class=('Steam',))],
-    }),
-    ('', {}),  # fa-circle-o
-    ('', {}),  # fa-dot-circle-o
-    ('', {  # fa-circle
-        'layout': 'max',
-    }),
+    ('other', {}),  # fa-other
 )
 
 groups = []
@@ -206,13 +193,13 @@ for idx, (label, config) in enumerate(group_setup):
 
 
 # Mouse
-mouse = (
-    Drag([mod], 'Button1', lazy.window.set_position_floating(),
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
         start=lazy.window.get_position()),
-    Drag([mod], 'Button3', lazy.window.set_size_floating(),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
         start=lazy.window.get_size()),
-)
-
+    Click([mod], "Button2", lazy.window.bring_to_front())
+]
 bring_front_click = True
 
 
@@ -227,19 +214,19 @@ screens = [
             widget.CPUGraph(graph_color='#18BAEB', fill_color='#1667EB.3', **Widget.graph),
             widget.MemoryGraph(graph_color='#00FE81', fill_color='#00B25B.3', **Widget.graph),
             widget.SwapGraph(graph_color='#5E0101', fill_color='#FF5656', **Widget.graph),
-            widget.NetGraph(graph_color='#ffff00', fill_color='#4d4d00', interface='wlan0', **Widget.graph),
+            widget.NetGraph(graph_color='#ffff00', fill_color='#4d4d00', interface='eth1', **Widget.graph),
             widget.HDDBusyGraph(device='sda', **Widget.graph),
-            widget.HDDBusyGraph(device='sdb', **Widget.graph),
 
             widget.ThermalSensor(metric=False, threshold=158),
             widget.Sep(**Widget.sep),
 
             widget.CurrentLayout(),
             widget.Systray(**Widget.systray),
-            widget.BatteryIcon(**Widget.battery),
-            # widget.Battery(**Widget.battery_text),
-            widget.Volume(theme_path='/usr/share/icons/Humanity/status/22/', cardid=1),
-            widget.YahooWeather(location='Fresno, CA', **Widget.weather),
+            # widget.BatteryIcon(**Widget.battery),
+            widget.Battery(**Widget.battery_text),
+            # widget.Volume(theme_path='/usr/share/icons/Humanity/status/22/', cardid=1),
+            widget.YahooWeather(location='Irvine, CA', **Widget.weather),
+            widget.HDDBusyGraph(device='sdb', **Widget.graph),
             widget.Clock(fmt='%a %d %b %I:%M %p'),
             ], **bar_defaults),
     ),
@@ -300,3 +287,8 @@ def floating_dialogs(window):
     transient = window.window.get_wm_transient_for()
     if dialog or transient:
         window.floating = True
+
+# not working, call from cmd-line or fix
+@hook.subscribe.startup
+def setup_keyboard():
+    subprocess.call(['source ~/.xmodmap'])
