@@ -156,6 +156,7 @@ keys = [
     Key([], 'XF86AudioMute', lazy.spawn(Commands.volume_toggle)),
 
     Key([], 'XF86TouchpadToggle', lazy.spawn(Commands.trackpad_toggle)),
+    Key([], 'XF86Display', lazy.spawn("/usr/local/bin/toggleVga1")),
 
     # TODO: What does the PrtSc button map to?
     Key([mod], 'p', lazy.spawn(Commands.screenshot)),
