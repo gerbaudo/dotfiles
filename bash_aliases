@@ -163,7 +163,7 @@ function git-pull-attach-to-issue() {
 # svn aliases
 alias svs='svn status'
 alias svi='svn info'
-alias svd='svn diff'
+alias svd='svn diff --diff-cmd colordiff'
 alias svdiw='svn diff -x --ignore-all-space'
 alias svu='svn update'
 alias svc='svn commit'
