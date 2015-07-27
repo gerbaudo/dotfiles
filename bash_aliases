@@ -24,6 +24,7 @@ alias vproxy='voms-proxy-init -voms atlas -valid 144:00'
 alias dipp='$HOME/bin/dipp.py' # get it from https://raw.github.com/davidegerbaudo/python-scripts/master/various/dipp.py
 alias psu='pgrep -u $USER | xargs ps -f -p'
 alias reset-caps='setxkbmap -option' # for when caps-lock gets stuck; restart xmonad afterward
+alias kscreen="pgrep -fl krenew -u ${USER} || AKLOG=/usr/bin/aklog krenew -b -t -- screen -D -m ; screen -r"
 
 ## ls with numeric permission, see http://stackoverflow.com/questions/1795976/can-the-unix-list-command-ls-output-numerical-chmod-permissions
 # some problem with double quotes in alias...to be fixed
