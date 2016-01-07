@@ -1,14 +1,15 @@
 ;; -*- Emacs-Lisp -*-
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(org-agenda-files (list "~/physics/worklog/2011/october.org" "~/physics/worklog/2011/september.org"))
+ '(org-agenda-files
+   (list "~/physics/worklog/2011/october.org" "~/physics/worklog/2011/september.org"))
  '(safe-local-variable-values (quote ((org-export-html-auto-postamble))))
  '(show-paren-mode t)
  '(tab-width 4)
@@ -18,11 +19,11 @@
  '(show-paren-mode t nil (paren)))
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-code ((t (:inherit shadow)))))
 
 (when (fboundp 'global-font-lock-mode) (global-font-lock-mode t)) ; font-lock highlight syntax
 (setq diff-switches "-u")                                         ; default to unified diffs
