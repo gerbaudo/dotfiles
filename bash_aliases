@@ -18,8 +18,8 @@ alias pc8='ssh -Y atlaspc8.ps.uci.edu'
 alias pc9='ssh -Y atlaspc9.ps.uci.edu'
 alias gp1='ssh -Y gpatlas1.ps.uci.edu'
 alias gp2='ssh -Y gpatlas2.ps.uci.edu'
-alias gp1hop='ssh -tCL 5906:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5906:localhost:22 gpatlas1.ps.uci.edu'
-alias gp2hop='ssh -tCL 5907:localhost:5906 atlaspc5.ps.uci.edu ssh -CL 5907:localhost:22 gpatlas2.ps.uci.edu'
+alias gp1hop='ssh -tCL 5906:localhost:5906 lxplus.cern.ch ssh -CL 5906:localhost:22 gpatlas1.ps.uci.edu'
+alias gp2hop='ssh -tCL 5907:localhost:5906 lxplus.cern.ch ssh -CL 5907:localhost:22 gpatlas2.ps.uci.edu'
 alias vproxy='voms-proxy-init -voms atlas -valid 144:00'
 alias dipp='$HOME/bin/dipp.py' # get it from https://raw.github.com/davidegerbaudo/python-scripts/master/various/dipp.py
 alias psu='pgrep -u $USER | xargs ps -f -p'
@@ -75,6 +75,7 @@ function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 function fname() { find . -iname "*$@*"; } ## find something here with ~name
 function remove_lines_from() { grep -F -x -v -f $2 $1; } ## removes lines from $1 if they appear in $2
 alias sum="xargs | tr ' ' '+' | bc" ## Usage: echo 1 2 3 | sum
+alias netlook='lsof -Pni'
 
 # A simple function to jot down my notes while working.
 # Example usage
@@ -169,3 +170,15 @@ alias svdiw='svn diff -x --ignore-all-space'
 alias svu='svn update'
 alias svc='svn commit'
 alias svcm='svn commit -m'
+
+# mount remote disks
+function lxmount() {
+    # run without (mount) or with '-u' (unmount)
+    if [[ 0 -eq $# ]]
+    then
+        sshfs gerbaudo@lxplus.cern.ch:/afs/cern.ch/user/g/gerbaudo /home/gerbaudo/fuse-cern
+    else
+        fusermount -u /home/gerbaudo/fuse-cern
+    fi
+}
+
