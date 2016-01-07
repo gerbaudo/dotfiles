@@ -1,0 +1,64 @@
+if [[ "$HOSTNAME" == at3*.pic.es ]]
+then
+    echo "Atlas local setup for at3*"
+    export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase 
+    alias setupATLAS='source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
+
+    alias qme='qstat -u $(whoami)'
+    function jobs_per_user() {
+        # just the ones on the at3* queues
+        qstat | grep at3 | awk 'NR >  1 {count[$3]++}END{for(j in count) print j," : "count[j]" jobs"}'
+    }
+    # from Loic
+    function kill_my_jobs {
+        qstat | grep $USER | grep "$1 " | awk '{print $1}' | sed -e 's/.pb...//g' > 00001templist
+        while read line  
+           do  
+           echo "qdel $line"
+           qdel $line
+        done < 00001templist
+        rm -f 00001templist
+    }
+    # utils from ~cshimmin/.bash_profile
+    function qkill_all() {
+        if [ -z "$1" ]; then
+	        lim=200
+        else
+            lim=$1
+        fi
+	    # first kill the jobs which are queued
+        jobids="$(qstat -u $(whoami) | grep at3 | grep Q | tail -n $lim | cut -d' ' -f1)"
+	    if [ ! -z "$jobids" ]; then
+		    qdel $jobids
+        fi
+	    # then kill any that are still running (squelch the usual error about 'all')
+        qdel all 2> /dev/null
+    }
+
+    function qhold_all() {
+	    if [ -z "$1" ]; then
+	        lim=100
+        else
+	        lim=$1
+        fi
+	    # first get jobs which are queued
+        jobids="$(qstat -u $(whoami) | grep at3 | grep Q | tail -n $lim | cut -d' ' -f1)"
+        if [ ! -z "$jobids" ]; then
+	        qhold -h u $jobids
+        fi
+    }
+
+    function qrls_all() {
+	    if [ -z "$1" ]; then
+	        lim=100
+        else
+	        lim=$1
+        fi
+	    # first get jobs which are holding
+        jobids="$(qstat -u $(whoami) | grep at3 | grep H | tail -n $lim | cut -d' ' -f1)"
+	    if [ ! -z "$jobids" ]; then
+	        qrls -h u $jobids
+        fi
+    }
+
+fi
