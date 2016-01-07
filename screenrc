@@ -27,4 +27,4 @@ hardstatus	alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'chdir
 
 # start new session in $HOME (see https://cern.service-now.com/service-portal/article.do?n=KB0002408)
-chdir
+# chdir
