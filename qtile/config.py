@@ -288,6 +288,11 @@ def floating_dialogs(window):
     transient = window.window.get_wm_transient_for()
     if dialog or transient:
         window.floating = True
+@hook.subscribe.client_new
+def vidyo_windows(window):
+    if ('vidyo' in window.window.get_name().lower()):
+        window.floating = True
+        
 
 # not working, call from cmd-line or fix
 @hook.subscribe.startup
