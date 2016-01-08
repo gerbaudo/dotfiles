@@ -173,3 +173,6 @@ function lxmount() {
     fi
 }
 
+function lp32() {
+    cat $* | ssh lxplus.cern.ch lpr -P 32-SB02-CANON
+}
