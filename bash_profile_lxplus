@@ -1,13 +1,11 @@
 if [[ "$(hostname -f 2>&1)" == *.cern.ch ]]
 then
 	echo "Setting up my lxplus aliases"
-	alias nifae06="ssh -Y nifae06.cern.ch"
-	alias pcatr17="ssh -Y pcatr17.cern.ch"
 	alias lpr="lpr -o media=A4 -o fit-to-page"
     # setup eos; atlernatively, 'source /afs/cern.ch/project/eos/installation/atlas/etc/setup.sh'
     alias eos="/afs/cern.ch/project/eos/installation/atlas/bin/eos.select"
 	# set default printer
-	export PRINTER="32-SB02-CAN"
+	export PRINTER="32-SB02-CANON"
     export AtlasSetup=/afs/cern.ch/atlas/software/dist/AtlasSetup
     alias asetup='source $AtlasSetup/scripts/asetup.sh'
     echo "${HOSTNAME} `date +%F`" >> ~/.last_lxplus_nodes
