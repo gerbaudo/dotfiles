@@ -70,6 +70,10 @@
       "Selective code display" t))
 (global-set-key [C-next] 'next-buffer)               ; tab between buffers : C-pgup
 (global-set-key [C-prior] 'previous-buffer)          ; tab between buffers : C-pgdn
+(global-set-key (kbd "C-x <up>") 'windmove-up)       ; windmove to navigate windows based on their position                                                                                                                                                            
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on) ; deal with colors for shell propmt
 
 ; customize c++ indent style, no namespace indentation
