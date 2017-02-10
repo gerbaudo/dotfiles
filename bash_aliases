@@ -12,11 +12,13 @@ alias gp2='ssh -Y gpatlas2.ps.uci.edu'
 alias gp1hop='ssh -tCL 5906:localhost:5906 lxplus.cern.ch ssh -CL 5906:localhost:22 gpatlas1.ps.uci.edu'
 alias gp2hop='ssh -tCL 5907:localhost:5906 lxplus.cern.ch ssh -CL 5907:localhost:22 gpatlas2.ps.uci.edu'
 alias vproxy='voms-proxy-init -voms atlas -valid 144:00'
+alias saq='setupATLAS --quiet'
 alias dipp='$HOME/bin/dipp.py' # get it from https://raw.github.com/davidegerbaudo/python-scripts/master/various/dipp.py
 alias psu='pgrep -u $USER | xargs ps -f -p'
 alias reset-caps='setxkbmap -option' # for when caps-lock gets stuck; restart xmonad afterward
 alias kscreen="pgrep -fl krenew -u ${USER} || AKLOG=/usr/bin/aklog krenew -b -t -- screen -D -m ; screen -r"
-
+alias stripcolors='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
+alias trimwhitespace="sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'"
 ## ls with numeric permission, see http://stackoverflow.com/questions/1795976/can-the-unix-list-command-ls-output-numerical-chmod-permissions
 # some problem with double quotes in alias...to be fixed
 #lsn() {
@@ -26,7 +28,7 @@ alias kscreen="pgrep -fl krenew -u ${USER} || AKLOG=/usr/bin/aklog krenew -b -t 
 
 # cannot define an alias with arg; use a function instead
 mktoday() {
-    local target_dir="/tmp/${USER}/`date +%F`" && [[ $# -gt 0 ]]  && target_dir="/tmp/${USER}/${1}-`date +%F`" ;
+    local target_dir="/var/tmp/${USER}/`date +%F`" && [[ $# -gt 0 ]]  && target_dir="/var/tmp/${USER}/${1}-`date +%F`" ;
     echo "mkdir ${target_dir}"
     mkdir -p ${target_dir}
     }
@@ -67,6 +69,7 @@ function fname() { find . -iname "*$@*"; } ## find something here with ~name
 function remove_lines_from() { grep -F -x -v -f $2 $1; } ## removes lines from $1 if they appear in $2
 alias sum="xargs | tr ' ' '+' | bc" ## Usage: echo 1 2 3 | sum
 alias netlook='lsof -Pni'
+alias eosquota="eos quota | grep -A 4 \"Quota Node: /eos/atlas/user/$\" | head -5"
 
 # A simple function to jot down my notes while working.
 # Example usage

@@ -148,3 +148,9 @@
 (setq inferior-lisp-program "clisp")  ; slime needs to know which lisp to use
 (autoload 'slime-selector "slime" t)
 (eval-after-load "slime" '(progn (slime-setup)))
+(add-to-list 'load-path "~/.emacs.d/elisp/")
+(add-to-list 'load-path "~/.emacs.d/elisp/cmake-ide/")
+(add-to-list 'load-path "~/.emacs.d/elpa/")
+;; (require 'cmake-ide)
+;; (require 'ede-compdb)
+

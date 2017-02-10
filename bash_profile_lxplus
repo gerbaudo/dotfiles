@@ -5,8 +5,23 @@ then
     # setup eos; atlernatively, 'source /afs/cern.ch/project/eos/installation/atlas/etc/setup.sh'
     alias eos="/afs/cern.ch/project/eos/installation/atlas/bin/eos.select"
 	# set default printer
-	export PRINTER="32-SB02-CANON"
+	export PRINTER="40-RC-CORBW"
     export AtlasSetup=/afs/cern.ch/atlas/software/dist/AtlasSetup
     alias asetup='source $AtlasSetup/scripts/asetup.sh'
     echo "${HOSTNAME} `date +%F`" >> ~/.last_lxplus_nodes
 fi
+
+function setup_recent_latex() {
+    # function to pick up a latex version newer than the system one
+    # based on https://twiki.cern.ch/twiki/bin/view/AtlasProtected/PubComLaTeXFAQ#lxplus
+    export PATH=/afs/cern.ch/sw/XML/texlive/latest/bin/x86_64-linux:$PATH
+    export TEXINPUTS=${HOME}/texmf-CERN:
+}
+
+function setup_ok_latex() {
+    # as above, but not so recent
+    # needed to compile VLQ notes
+    export PATH=/afs/cern.ch/sw/XML/TL2014/bin/x86_64-linux:$PATH
+    export TEXINPUTS=${HOME}/texmf-CERN:
+}
+
