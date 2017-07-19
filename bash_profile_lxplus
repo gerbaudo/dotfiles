@@ -2,8 +2,6 @@ if [[ "$(hostname -f 2>&1)" == *.cern.ch ]]
 then
 	echo "Setting up my lxplus aliases"
 	alias lpr="lpr -o media=A4 -o fit-to-page"
-    # setup eos; atlernatively, 'source /afs/cern.ch/project/eos/installation/atlas/etc/setup.sh'
-    alias eos="/afs/cern.ch/project/eos/installation/atlas/bin/eos.select"
 	# set default printer
 	export PRINTER="40-RC-CORBW"
     export AtlasSetup=/afs/cern.ch/atlas/software/dist/AtlasSetup
